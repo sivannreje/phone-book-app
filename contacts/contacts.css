@@ -105,6 +105,25 @@
     box-shadow: inset 5px 0 5px -5px #b7b7b7;
     padding: 3px;
 }
+
+@media screen and (max-width: 700px)  {
+    .display-part {
+        margin: 0;
+        float: right;
+        display: flex;
+        flex-direction: column;
+        flex: 0 2 98%;
+        -webkit-transition:all linear 0.5s;
+        transition:all linear 0.5s;
+        align-self: flex-end;
+        clear: both;
+        box-sizing: border-box;
+        -webkit-box-shadow: inset 5px 0 5px -5px #b7b7b7;
+        box-shadow: inset 5px 0 5px -5px #b7b7b7;
+        padding: 3px;
+    }
+}
+
 .contacts-part {
     flex: 2 0 40%;
     display: flex;
