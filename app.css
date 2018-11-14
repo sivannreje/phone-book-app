@@ -1,0 +1,21 @@
+#app-title {
+    font-family: 'KoHo', sans-serif;
+    color: #a102bd;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 0 5px;
+    padding: 1%;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1)!important;
+    -webkit-box-shadow: 0 2px 4px rgba(0,0,0,.1)!important;
+    -moz-box-shadow: 0 4px 4px rgba(0,0,0,.1)!important;
+}
+
+#app-icon {
+    width: 100px;
+    margin: 5px;
+}

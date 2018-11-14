@@ -1,0 +1,75 @@
+<div class="create-contact-form">
+    <form name="contactForm" ng-submit="submit(contactForm.$invalid)">
+        <button class="close-btn" ng-click="closeForm()" type="button">
+            <i class="fas fa-times"></i>
+        </button>
+        <!--image selection-->
+        <div align="center">
+            <div class="image-upload">
+                <label for="file-input">
+                    <img ng-src="../resources/profileman.png" id="contact-image"/>
+                </label>
+                <input id="file-input" type='file' onchange="angular.element(this).scope().readURL(this)" accept="image/*" />
+            </div>
+        </div>
+
+        <!-- first name field -->
+        <div class="form-section">
+            <label for="firstNameInput">First Name</label>
+            <input type="text" class="form-control" id="firstNameInput" placeholder="First Name" ng-model="newContact.firstName" required>
+        </div>
+
+        <!-- last name field-->
+        <div class="form-section">
+            <label for="lastNameInput">Last Name</label>
+            <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name" ng-model="newContact.lastName" required>
+        </div>
+
+
+        <!--contact information -->
+        <label >Contact Info</label>
+        <div class="form-section" ng-repeat="property in newContact.properties">
+            <div class="contact-info-row">
+
+                <!-- information type: mobile, work, email etc..-->
+                <div class="contact-info-type contact-info-col">
+                    <select class="form-control" id="detail-type" ng-model="property.propType" ng-options="propertyType as propertyType for propertyType in propertyTypes"></select>
+                </div>
+
+                <!-- information input field -->
+                <div class="contact-info-val contact-info-col">
+                    <input type="text" class="form-control detail" id="detail{{$index}}" ng-model="property.propVal">
+                </div>
+                <div class="contact-info-btn contact-info-col">
+                    <button  class="clear-btn grey-color" type="button" ng-click="removePropertyForm($index)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- add another information contact -->
+        <div class="form-section">
+            <button class="add-btn" type="button" ng-click="addPropertyForm()"><i class="fa fa-plus-circle" title="add info"></i><span class="grey-color"> add Contact Information</span></button>
+        </div>
+        <!-- error messages-->
+        <div ng-hide="isFilled" class="validation-error"><small>Please fill at least one contact info</small></div>
+        <div ng-show="contactExists" class="validation-error"><small>contact already exists</small></div>
+        <!-- form button -->
+        <div  class="form-section form-btns">
+            <div class="save-contact-btn">
+                <input class="btn purpleBTN center-block" type="submit" value="Save changes">
+            </div>
+        </div>
+    </form>
+</div>
+<!--
+<h1> results:</h1>
+
+first name: {{newContact.firstName}} <br>
+last name: {{newContact.lastName}} <br>
+<div ng-repeat="d in newContact.properties">
+    {{d.propType}} : {{d.propVal}}
+</div>
+{{newContact.contactImg}}
+<img ng-src="{{newContact.contactImg}}">
+-->

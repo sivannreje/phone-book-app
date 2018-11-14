@@ -1,0 +1,121 @@
+<div class="nav">
+<div class="nav-item" ng-click="addContact()"><i class="fa fa-plus-circle"></i> Add Contact</div>
+<div class="nav-item" ng-click="deleteAllContacts()"><i class="fa fa-trash"></i> Delete All</div>
+</div>
+
+<div id="contacts">
+
+    <!--display the contact pressed as form-->
+    <div class="display-part" ng-show="contactDisplay">
+        <form name="contactEdit" ng-submit="submit(contactEdit.$invalid)">
+            <button class="close-btn" ng-click="closeDisplay()" type="button">
+                <i class="fas fa-times"></i>
+            </button>
+            <!--image selection-->
+            <div align="center">
+                <div ng-show="editMode" class="image-upload">
+                    <label for="file-input">
+                        <img ng-src="{{activeImg}}" id="contact-image-edit"/>
+                    </label>
+                    <input id="file-input" type='file' onchange="angular.element(this).scope().readURL(this)" accept="image/*" />
+                </div>
+                <div ng-hide="editMode" class="image-upload">
+                    <label>
+                        <img ng-src="{{activeImg}}" id="contact-image-display"/>
+                    </label>
+                </div>
+            </div>
+
+            <!-- create icon for editing-->
+            <div ng-hide="editMode" align="right">
+                <a ng-click="edit()">
+                    <i class="material-icons" title="Edit">create</i>
+                </a>
+            </div>
+
+            <!-- first name field -->
+            <div class="form-section">
+                <label for="firstNameInput">First Name</label>
+                <label ng-hide="editMode" class="contactDetail">{{activeContact.firstName}}</label>
+                <input ng-show="editMode" type="text" class="form-control" id="firstNameInput" placeholder="First Name" ng-model="editContact.firstName" required>
+            </div>
+
+            <!-- last name field-->
+            <div class="form-section">
+                <label for="lastNameInput">Last Name</label>
+                <label ng-hide="editMode" class="contactDetail">{{activeContact.lastName}}</label>
+                <input ng-show="editMode" type="text" class="form-control" id="lastNameInput" placeholder="Last Name" ng-model="editContact.lastName" required>
+            </div>
+
+            <!--contact information -->
+            <label >Contact Info</label>
+            <div class="form-section" ng-repeat="property in activeProperties">
+                <div class="contact-info-row">
+
+                    <!-- information type: mobile, work, email etc..-->
+                    <div class="contact-info-type contact-info-col">
+                        <select ng-show="editMode" class="form-control" id="detail-type" ng-model="property.propType" ng-options="propertyType as propertyType for propertyType in propertyTypes"></select>
+                        <div ng-hide="editMode" class="propertyType" >{{property.propType}}</div>
+                    </div>
+
+                    <!-- information input field -->
+                    <div class="contact-info-val contact-info-col">
+                        <label ng-hide="editMode" class="propertyVal">{{property.propVal}}</label>
+                        <input ng-show="editMode" type="text" class="form-control detail" id="detail{{$index}}" ng-model="property.propVal">
+                    </div>
+                    <div class="contact-info-btn contact-info-col">
+                        <button  ng-show="editMode" class="clear-btn grey-color" type="button" ng-click="removePropertyForm($index)">
+                            <i class="fas fa-times" ></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- add another information contact -->
+            <div ng-show="editMode" class="form-section">
+                <button class="add-btn" type="button" ng-click="addPropertyForm()"><i class="fa fa-plus-circle" title="add info"></i><span class="grey-color">add Contact Information</span></button>
+            </div>
+
+            <!-- error messages-->
+            <div ng-hide="isFilled" class="validation-error"><small>Please fill at least one contact info</small></div>
+            <div ng-show="contactExists" class="validation-error"><small>contact already exists</small></div>
+
+            <!-- form buttons -->
+            <div  ng-show="editMode" class="form-section form-btns">
+                <div class="save-contact-btn">
+                    <input class="btn purpleBTN center-block" type="submit" value="Save changes">
+                </div>
+                <div class="delete-contact-btn">
+                    <button ng-click="deleteContact()" class="deleteBTN">
+                        <i class='fas fa-trash'></i> Delete Contact
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--contacts list-->
+    <div class="contacts-part">
+        <div>
+            <i class='fa fa-search' style="color: #b75fd8"></i>
+            <input id="searchBox" type="search" ng-model="search" placeholder="Search contact..." aria-label="Search">
+        </div>
+        <div class="contact-list">
+            <div class="list-group list-group-flush" ng-repeat="contact in pinList | filter: search">
+                <div class="contact-item list-group-item list-group-item-action" ng-click="displayContact(contact)">
+                    <span>{{contact.firstName}} {{contact.lastName}}</span><span ng-click="removeContactPin(contact)" class="pin purple-color"><i class="fa fa-thumbtack"></i></span>
+                    <div class="phone-number">{{contact.properties[0].propVal}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-list">
+            <div class="list-group list-group-flush" ng-repeat="contact in contacts | filter: search">
+                <div class="contact-item list-group-item list-group-item-action" ng-click="displayContact(contact)">
+                    <span>{{contact.firstName}} {{contact.lastName}}</span><span ng-click="pinContact(contact)" class="pin grey-color"><i class="fa fa-thumbtack"></i></span>
+                    <div class="phone-number">{{contact.properties[0].propVal}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

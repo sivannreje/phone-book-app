@@ -1,0 +1,237 @@
+#searchBox {
+    width: 90%;
+    padding: 12px 20px;
+    margin: auto;
+    border: 0;
+    border-bottom: 3px solid #adadad;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+#searchBox:focus {
+    border-bottom: 3px solid #b75fd8;
+    outline: none;
+    box-shadow: none;
+
+}
+.phone-number {
+    color: #999999;
+}
+
+.add-btn {
+    color: grey;
+    border: 0;
+    background-color: transparent;
+}
+.purple-background {
+    background-color: #b75fd8;
+}
+.purpleBTN {
+    background-color: #b75fd8;
+    color: white;
+    outline: none;
+}
+
+.purpleBTN:hover {
+    background-color: #9c51b9;
+    outline: none;
+    color: white;
+}
+
+.center-block {
+    float:none;
+}
+
+.image-upload > input {
+    visibility:hidden;
+    width:0;
+    height:0
+}
+
+#contact-image, #contact-image-display,  #contact-image-edit {
+    display: block;
+    position: relative;
+    width: auto;
+    height: 100%;
+    max-height: 200px;
+    max-width: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.deleteBTN {
+    color: red;
+    background-color: transparent;
+    border: 0;
+    padding: 1%;
+}
+
+.contactDetail {
+    display: block;
+    color: grey;
+}
+
+.propertyType {
+    display: inline-block;
+    cursor: inherit;
+    color: #b75fd8;
+    border: 0;
+    padding: 5px;
+}
+
+.propertyVal {
+    display: inline-block;
+    padding: 5px;
+    color: grey;
+}
+
+.validation-error {
+    color: red;
+    padding: 2px 2px 4px 2px;
+}
+
+.display-part {
+    margin: 0;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    flex: 0 2 40%;
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+    align-self: flex-end;
+    clear: both;
+    box-sizing: border-box;
+    -webkit-box-shadow: inset 5px 0 5px -5px #b7b7b7;
+    box-shadow: inset 5px 0 5px -5px #b7b7b7;
+    padding: 3px;
+}
+.contacts-part {
+    flex: 2 0 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+#contacts {
+    width: 98%;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+}
+
+
+.display-part.ng-hide {
+    opacity:0;
+    transform: translateX(20%);
+    overflow: hidden;
+}
+
+.form-section {
+    width: 100%;
+    margin: 5px;
+    clear: both;
+}
+.contact-info-type {
+    flex: 0 6 30%;
+    display: flex;
+    flex-direction: column;
+}
+.contact-info-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: space-around;
+}
+.contact-info-col {
+    margin: 2px;
+}
+.contact-info-val {
+    flex: 12 0 60%;
+    display: flex;
+    flex-direction: column;
+}
+.contact-info-btn {
+    flex: 0 12 8%;
+    display: flex;
+    flex-direction: column;
+}
+.form-btns {
+    width: 100%;
+    display: inline-block;
+}
+.save-contact-btn {
+    width: 80%;
+    margin: 20px;
+}
+.delete-contact-btn {
+    width: 80%;
+    margin: 20px;
+}
+
+.close-btn {
+    background-color: transparent;
+    float:left;
+    border: 0;
+    margin: 2px;
+}
+
+.nav {
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: space-between;
+    padding: 1%;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: row;
+    color: #b75fd8;
+    justify-content: center;
+    align-content: space-between;
+    padding: 1%;
+    cursor: pointer;
+}
+
+.nav-item::before {
+    content: '';
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    color: #b75fd8;
+    justify-content: flex-start;
+}
+
+.create-contact-form {
+    width: 98%;
+    margin: 0;
+    display: block;
+}
+
+.grey-color {
+    color: grey;
+}
+
+.purple-color {
+    color: #b75fd8;
+}
+
+.pin {
+    float: right;
+    margin-right: 2px;
+    display: inline-block;
+    position: relative;
+}
+
+.clear-btn {
+    margin-top: 1px;
+    border: 0;
+    background-color: transparent;
+}
+.contact-list {
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1)!important;
+    -webkit-box-shadow: 0 2px 4px rgba(0,0,0,.1)!important;
+    -moz-box-shadow: 0 4px 4px rgba(0,0,0,.1)!important;
+}
